@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee table</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+
+</head>
+<body>
+<div align = "center" >
+    <h3><a  th:href="@{'/addNewEmployee'}">add new employee</a></h3>
+</div>
+
+<table class="table table-striped ">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Position</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Age</th>
+        <th scope="col">edit</th>
+        <th scope="col">delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employeeList} ">
+        <td th:text="${employee.employeeId}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.position}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.age}"></td>
+        <td>
+            <a th:href="@{'/edit/' + ${employee.employeeId}}">edit</a>
+        </td>
+        <td>
+            <a th:href="@{'/delete/' + ${employee.employeeId}}">delete</a>
+        </td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+<div align = "center" >
+    <h3><a  th:href="@{'/'}">back to home page</a></h3>
+</div>
+
+</body>
+</html>
